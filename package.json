@@ -1,0 +1,25 @@
+{
+  "name": "pokemon-spawning-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluewave41/PokeGo-Spawn-Server.git"
+  },
+  "author": "bluewave41",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bluewave41/PokeGo-Spawn-Server/issues"
+  },
+  "homepage": "https://github.com/bluewave41/PokeGo-Spawn-Server#readme",
+  "dependencies": {
+    "knex": "^0.21.15",
+    "mysql2": "^2.2.5",
+    "objection": "^2.2.5",
+    "socket.io": "^3.0.5"
+  }
+}
