@@ -54,16 +54,16 @@ async function generatePokemon() {
 
 function determinePokemonRarity() {
 	let random = Math.floor(Math.random() * 100);
-	if(random < 52) {
+	if(random < 60) { //60%
 		return 'common';
 	}
-	else if(random < 88) {
+	else if(random < 93) { //33%
 		return 'uncommon';
 	}
-	else if(random < 98) {
+	else if(random < 98) { //5%
 		return 'rare';
 	}
-	else {
+	else { //2%
 		return 'legendary';
 	}
 }
@@ -89,15 +89,15 @@ function calculateNumberOfPokemon() {
 
 /*Interval tasks*/
 
-//5 minutes
+//1 minute
 setInterval(async function() {
 	console.log('doing location checks');
 	
 	//handle travel requests
 	const finishedRequests = await TravelRequests.query().select('u.discordId', 'tr.location')
-		.from('travelrequests as tr')
+		.from('travel_requests as tr')
 		.join('users as u', 'u.userId', 'tr.userId')
-		.where(raw('tr.created_at + INTERVAL 1 MINUTE < NOW()'));
+		.where(raw('tr.end_time < NOW()'));
 		
 	for(var i=0;i<finishedRequests.length;i++) {
 		await User.query().update({
@@ -107,10 +107,10 @@ setInterval(async function() {
 	}
 	
 	await TravelRequests.query().delete()
-		.where(raw('created_at + INTERVAL 1 MINUTE < NOW()'));
+		.where(raw('end_time < NOW()'));
 	SocketServer.emit('locationUpdate', finishedRequests);
-}, 300000)
-//300000
+}, 60000)
+//60000
 
 //30 minutes
 setInterval(function() {

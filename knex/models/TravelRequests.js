@@ -2,7 +2,7 @@ const { Model } = require('objection');
 
 class TravelRequests extends Model {
     static get tableName() {
-		return 'travelrequests';
+		return 'travel_requests';
     }
 }
 
