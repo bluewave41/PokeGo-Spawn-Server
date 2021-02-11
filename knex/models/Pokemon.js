@@ -58,6 +58,22 @@ class Pokemon extends Model {
             totaliv: this.totaliv,
         }
     }
+	get rocketInsert() {
+        return {
+            pokedexId: this.pokedexId,
+			rocketId: this.rocketId,
+            cp: this.cp,
+            hp: this.hp, 
+            hpiv: this.hpiv,
+            atkiv: this.atkiv,
+            defiv: this.defiv,
+            gender: this.gender,
+            level: this.level,
+            maxHP: this.hp,
+            fastMove: this.fastMove,
+            chargeMove: this.chargeMove,
+        }
+    }
 }
 
 module.exports = Pokemon;

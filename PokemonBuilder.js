@@ -46,10 +46,10 @@ module.exports = {
         return Math.random() < femaleRate;
     },
     getMoves(pokemon) {
-        const fastMoves = PokemonData[pokemon.pokedexId].fastMoves.filter(el => !MoveList[el].isLegacy);
-        const chargeMoves = PokemonData[pokemon.pokedexId].chargeMoves.filter(el => !MoveList[el].isLegacy);
-
-        pokemon.fastMove = fastMoves[Math.floor(Math.random() * fastMoves.length)];
-        pokemon.chargeMove = chargeMoves[Math.floor(Math.random() * chargeMoves.length)];
+        const fastMoves = PokemonData[pokemon.pokedexId].fastMoves.filter(el => !el[1]);
+        const chargeMoves = PokemonData[pokemon.pokedexId].chargeMoves.filter(el => !el[1]);
+		
+        pokemon.fastMove = fastMoves[Math.floor(Math.random() * fastMoves.length)][0];
+        pokemon.chargeMove = chargeMoves[Math.floor(Math.random() * chargeMoves.length)][0];
     }
 }
