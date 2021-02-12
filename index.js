@@ -97,7 +97,7 @@ setInterval(async function() {
 	const finishedRequests = await TravelRequests.query().select('u.discordId', 'tr.location')
 		.from('travel_requests as tr')
 		.join('users as u', 'u.userId', 'tr.userId')
-		.where(raw('tr.end_time < NOW()'));
+		.where(raw('tr.endTime < NOW()'));
 		
 	for(var i=0;i<finishedRequests.length;i++) {
 		await User.query().update({
@@ -107,7 +107,7 @@ setInterval(async function() {
 	}
 	
 	await TravelRequests.query().delete()
-		.where(raw('end_time < NOW()'));
+		.where(raw('endTime < NOW()'));
 	SocketServer.emit('locationUpdate', finishedRequests);
 }, 60000)
 //60000
