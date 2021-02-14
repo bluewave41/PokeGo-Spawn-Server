@@ -2,7 +2,7 @@ const { Model } = require('objection');
 
 class SpunPokestops extends Model {
     static get tableName() {
-		return 'spunpokestops';
+		return 'spun_pokestops';
     }
 }
 

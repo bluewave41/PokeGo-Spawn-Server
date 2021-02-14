@@ -54,10 +54,10 @@ async function generatePokemon() {
 
 function determinePokemonRarity() {
 	let random = Math.floor(Math.random() * 100);
-	if(random < 60) { //60%
+	if(random < 80) { //80%
 		return 'common';
 	}
-	else if(random < 93) { //33%
+	else if(random < 93) { //13%
 		return 'uncommon';
 	}
 	else if(random < 98) { //5%
