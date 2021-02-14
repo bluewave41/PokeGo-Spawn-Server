@@ -106,6 +106,10 @@ setInterval(async function() {
 		.where('discordId', finishedRequests[i].discordId)
 	}
 	
+	//handle spun pokestops
+	await SpunPokestops.query().delete()
+		.where(raw('endTime < NOW()'));
+	
 	await TravelRequests.query().delete()
 		.where(raw('endTime < NOW()'));
 	SocketServer.emit('locationUpdate', finishedRequests);
