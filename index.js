@@ -7,6 +7,7 @@ const PokemonBuilder = require('./PokemonBuilder');
 const TravelRequests = require('./knex/models/TravelRequests');
 const SocketServer = require('./SocketServer');
 const SpunPokestops = require('./knex/models/SpunPokestops');
+const SeenEncounters = require('./knex/models/SeenPokemon');
 const User = require('./knex/models/User');
 const { raw } = require('objection');
 require('./Database');
@@ -117,8 +118,9 @@ setInterval(async function() {
 //60000
 
 //30 minutes
-setInterval(function() {
+setInterval(async function() {
 	console.log('generating pokemon');
+	await SeenEncounters.query().delete();
 	generatePokemon();
 }, 1800000)
 //1800000
