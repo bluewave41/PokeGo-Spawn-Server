@@ -7,7 +7,7 @@ const PokemonBuilder = require('./PokemonBuilder');
 const TravelRequests = require('./knex/models/TravelRequests');
 const SocketServer = require('./SocketServer');
 const SpunPokestops = require('./knex/models/SpunPokestops');
-const SeenEncounters = require('./knex/models/SeenPokemon');
+const SeenEncounters = require('./knex/models/SeenEncounters');
 const User = require('./knex/models/User');
 const { raw } = require('objection');
 require('./Database');
